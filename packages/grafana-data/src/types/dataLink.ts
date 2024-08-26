@@ -52,6 +52,10 @@ export interface DataLink<T extends DataQuery = any> {
 
   origin?: DataLinkConfigOrigin;
   sortIndex?: number;
+  meta?: {
+    correlationData?: ExploreCorrelationHelperData;
+    transformations?: DataLinkTransformationConfig[];
+  };
 }
 
 /**
@@ -79,10 +83,6 @@ export interface InternalDataLink<T extends DataQuery = any> {
   datasourceUid: string;
   datasourceName: string; // used as a title if `DataLink.title` is empty
   panelsState?: ExplorePanelsState;
-  meta?: {
-    correlationData?: ExploreCorrelationHelperData;
-  };
-  transformations?: DataLinkTransformationConfig[];
   range?: TimeRange;
 }
 
