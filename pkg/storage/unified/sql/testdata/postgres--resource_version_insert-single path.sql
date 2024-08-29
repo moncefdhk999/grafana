@@ -7,6 +7,6 @@ INSERT INTO "resource_version"
     VALUES (
         '',
         '',
-        1
+        EXTRACT(EPOCH FROM clock_timestamp()) * 1000000::BIGINT
     )
 ;
