@@ -26,20 +26,20 @@ func initSecureFieldTables(mg *migrator.Migrator) string {
 			// The secure field name
 			{Name: "field", Type: migrator.DB_NVarchar, Length: 36, Nullable: false},
 
-			// Encrypted secret value
+			// Encrypted secret value empty when the value is actually managed in a 3rd party system (enterprise only)
 			{Name: "value", Type: migrator.DB_Text, Nullable: true},
 
 			// A secure hash with salt that can help identity secret field reuse
 			{Name: "hash", Type: migrator.DB_NVarchar, Length: 40, Nullable: true},
 
-			// For enterprise, join in the ref table
+			// For enterprise, join in the ref table ???
 			{Name: "ref", Type: migrator.DB_NVarchar, Length: 40, Nullable: true},
 
 			{Name: "created", Type: migrator.DB_DateTime, Nullable: false},
 			{Name: "updated", Type: migrator.DB_DateTime, Nullable: false},
 		},
 		Indices: []*migrator.Index{
-			{Cols: []string{"namespace", "group", "kind", "name", "field"}, Type: migrator.UniqueIndex},
+			{Cols: []string{"namespace", "group", "resource", "name", "field"}, Type: migrator.UniqueIndex},
 			{Cols: []string{"ref"}, Type: migrator.IndexType},
 			{Cols: []string{"hash"}, Type: migrator.IndexType},
 		},
