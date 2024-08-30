@@ -593,7 +593,8 @@
               },
               "title": {
                 "type": "string",
-                "description": "An informative title for your component extension."
+                "description": "An informative title for your component extension.",
+                "minLength": 10
               },
               "description": {
                 "type": "string",
@@ -618,7 +619,8 @@
               },
               "title": {
                 "type": "string",
-                "description": "An informative title for your link extension."
+                "description": "An informative title for your link extension.",
+                "minLength": 10
               },
               "description": {
                 "type": "string",
