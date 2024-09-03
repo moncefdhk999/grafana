@@ -90,9 +90,9 @@ import { AddedLinksRegistry } from './features/plugins/extensions/registry/Added
 import { ExposedComponentsRegistry } from './features/plugins/extensions/registry/ExposedComponentsRegistry';
 import { setupPluginExtensionRegistries } from './features/plugins/extensions/registry/setup';
 import { usePluginComponent } from './features/plugins/extensions/usePluginComponent';
-import { createUsePluginComponents } from './features/plugins/extensions/usePluginComponents';
+import { usePluginComponents } from './features/plugins/extensions/usePluginComponents';
 import { createUsePluginExtensions } from './features/plugins/extensions/usePluginExtensions';
-import { createUsePluginLinks } from './features/plugins/extensions/usePluginLinks';
+import { usePluginLinks } from './features/plugins/extensions/usePluginLinks';
 import { importPanelPlugin, syncGetPanelPlugin } from './features/plugins/importPanelPlugin';
 import { preloadPlugins } from './features/plugins/pluginPreloader';
 import { QueryRunner } from './features/query/state/QueryRunner';
@@ -233,11 +233,11 @@ export class GrafanaApp {
         await preloadPlugins(awaitedAppPlugins, pluginExtensionsRegistries, 'frontend_awaited_plugins_preload');
       }
 
-      setPluginLinksHook(createUsePluginLinks(pluginExtensionsRegistries.addedLinksRegistry));
       setPluginExtensionGetter(createPluginExtensionsGetter(pluginExtensionsRegistries));
       setPluginExtensionsHook(createUsePluginExtensions(pluginExtensionsRegistries));
+      setPluginLinksHook(usePluginLinks);
       setPluginComponentHook(usePluginComponent);
-      setPluginComponentsHook(createUsePluginComponents(pluginExtensionsRegistries.addedComponentsRegistry));
+      setPluginComponentsHook(usePluginComponents);
 
       this.extensionRegistries = {
         addedLinks: pluginExtensionsRegistries.addedLinksRegistry,

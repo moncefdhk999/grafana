@@ -97,7 +97,13 @@ export function AppRootPage({ pluginId, pluginNavSection }: Props) {
 
   const pluginRoot = plugin.root && (
     <PluginContextProvider meta={plugin.meta}>
-      <ExtensionRegistriesProvider registries={{ addedLinks, addedComponents, exposedComponents }}>
+      <ExtensionRegistriesProvider
+        registries={{
+          addedLinks: addedLinks.readOnly(),
+          addedComponents: addedComponents.readOnly(),
+          exposedComponents: exposedComponents.readOnly(),
+        }}
+      >
         <plugin.root
           meta={plugin.meta}
           basename={match.url}
