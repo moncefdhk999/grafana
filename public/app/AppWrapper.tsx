@@ -112,7 +112,7 @@ export class AppWrapper extends Component<AppWrapperProps, AppWrapperState> {
               >
                 <Router history={locationService.getHistory()}>
                   <LocationServiceProvider service={locationService}>
-                    <ExtensionRegistriesProvider registries={app.extensionRegistries}>
+                    <ExtensionRegistriesProvider registries={app.pluginExtensionsRegistries}>
                       <CompatRouter>
                         <ModalsContextProvider>
                           <GlobalStyles />
