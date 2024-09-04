@@ -9,6 +9,7 @@ import (
 	"strings"
 	"time"
 
+	common "github.com/grafana/grafana/pkg/apimachinery/apis/common/v0alpha1"
 	"k8s.io/apimachinery/pkg/api/meta"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -96,6 +97,14 @@ type GrafanaMetaAccessor interface {
 
 	GetStatus() (any, error)
 	SetStatus(any) error
+
+	// Get generic secure values or empty
+	// the ok parameter indicates that the resource can hold secure values
+	GetSecureValues() (map[string]common.SecureValue, bool)
+
+	// Set (or update) a secure value on this resource
+	// Will throw an error if the backing resource is unable to support secure values
+	SetSecureValue(field string, value common.SecureValue) error
 
 	// Find a title in the object
 	// This will reflect the object and try to get:
@@ -529,6 +538,34 @@ func (m *grafanaMetaAccessor) GetStatus() (status any, err error) {
 }
 
 func (m *grafanaMetaAccessor) SetStatus(s any) (err error) {
+	defer func() {
+		if r := recover(); r != nil {
+			err = fmt.Errorf("error setting status")
+		}
+	}()
+	m.r.FieldByName("Status").Set(reflect.ValueOf(s))
+	return
+}
+
+func (m *grafanaMetaAccessor) GetSecureValues() (values map[string]common.SecureValue, ok bool) {
+	ok = true
+	defer func() {
+		if r := recover(); r != nil {
+			ok = false
+		}
+	}()
+
+	// Could be a struct with explicit fields
+	// A field property (unstructured)
+	// Map<string,SecureValue>
+
+	// A struct with name secure
+	sss := m.r.FieldByName("Secure")
+	fmt.Printf("OUT %+v", sss)
+	return
+}
+
+func (m *grafanaMetaAccessor) SetSecureValue(field string, value common.SecureValue) (err error) {
 	defer func() {
 		if r := recover(); r != nil {
 			err = fmt.Errorf("error setting status")
