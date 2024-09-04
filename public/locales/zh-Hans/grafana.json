@@ -370,6 +370,7 @@
       "placeholder": "搜索全部"
     }
   },
+  "Copy to Clipboard": "",
   "correlations": {
     "add-new": "添加新的",
     "alert": {
@@ -599,12 +600,13 @@
       "title": "注释"
     },
     "dashboard-delete-button": "",
-    "dashboard-delete-modal": {
+    "delete-modal": {
       "confirmation-text": "",
       "delete-button": "",
-      "text": "",
       "title": ""
     },
+    "delete-modal-restore-dashboards-text": "",
+    "delete-modal-text": "",
     "general": {
       "auto-refresh-description": "",
       "auto-refresh-label": "自动刷新",
@@ -912,6 +914,11 @@
   "folder-picker": {
     "loading": "正在加载文件夹..."
   },
+  "gen-ai": {
+    "apply-suggestion": "",
+    "incomplete-request-error": "",
+    "send-custom-feedback": ""
+  },
   "grafana-ui": {
     "drawer": {
       "close": "关闭"
@@ -995,78 +1002,61 @@
   "ldap-drawer": {
     "attributes-section": {
       "description": "",
-      "email": {
-        "label": ""
-      },
+      "email-label": "",
       "label": "",
-      "member-of": {
-        "label": ""
-      },
-      "name": {
-        "label": ""
-      },
-      "surname": {
-        "label": ""
-      },
-      "username": {
-        "label": ""
-      }
+      "member-of-label": "",
+      "name-label": "",
+      "surname-label": "",
+      "username-label": ""
     },
     "extra-security-section": {
+      "client-cert-label": "",
+      "client-cert-placeholder": "",
+      "client-cert-value-label": "",
+      "client-cert-value-placeholder": "",
+      "client-key-label": "",
+      "client-key-placeholder": "",
+      "client-key-value-label": "",
+      "client-key-value-placeholder": "",
+      "encryption-provider-base-64": "",
+      "encryption-provider-description": "",
+      "encryption-provider-file-path": "",
+      "encryption-provider-label": "",
       "label": "",
-      "min-tls-version": {
-        "description": "",
-        "label": ""
-      },
-      "start-tls": {
-        "description": "",
-        "label": ""
-      },
-      "tls-ciphers": {
-        "description": "",
-        "label": "",
-        "placeholder": ""
-      },
-      "use-ssl": {
-        "description": "",
-        "label": "",
-        "tooltip": ""
-      }
+      "min-tls-version-description": "",
+      "min-tls-version-label": "",
+      "root-ca-cert-label": "",
+      "root-ca-cert-placeholder": "",
+      "root-ca-cert-value-label": "",
+      "start-tls-description": "",
+      "start-tls-label": "",
+      "tls-ciphers-description": "",
+      "tls-ciphers-label": "",
+      "tls-ciphers-placeholder": "",
+      "use-ssl-description": "",
+      "use-ssl-label": "",
+      "use-ssl-tooltip": ""
     },
     "group-mapping-section": {
       "description": "",
-      "group-search-base-dns": {
-        "description": "",
-        "label": ""
-      },
-      "group-search-filter": {
-        "description": "",
-        "label": ""
-      },
-      "group-search-filter-user-attribute": {
-        "description": "",
-        "label": ""
-      },
+      "group-search-base-dns-description": "",
+      "group-search-base-dns-label": "",
+      "group-search-filter-description": "",
+      "group-search-filter-label": "",
+      "group-search-filter-user-attribute-description": "",
+      "group-search-filter-user-attribute-label": "",
       "label": "",
-      "skip-org-role-sync": {
-        "description": "",
-        "label": ""
-      }
+      "skip-org-role-sync-description": "",
+      "skip-org-role-sync-label": ""
     },
     "misc-section": {
-      "allow-sign-up": {
-        "descrition": "",
-        "label": ""
-      },
+      "allow-sign-up-descrition": "",
+      "allow-sign-up-label": "",
       "label": "",
-      "port": {
-        "description": "",
-        "label": ""
-      },
-      "timeout": {
-        "description": "",
-        "label": ""
-      }
+      "port-description": "",
+      "port-label": "",
+      "timeout-description": "",
+      "timeout-label": ""
     },
     "title": ""
   },
