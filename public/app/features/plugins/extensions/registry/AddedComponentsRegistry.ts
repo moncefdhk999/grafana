@@ -1,3 +1,5 @@
+import { ReplaySubject } from 'rxjs';
+
 import { PluginExtensionAddedComponentConfig } from '@grafana/data';
 
 import { logWarning, wrapWithPluginContext } from '../utils';
@@ -17,14 +19,14 @@ export type AddedComponentRegistryItem<Props = {}> = {
   component: React.ComponentType<Props>;
 };
 
-export class AddedComponentsRegistry extends Registry<
-  AddedComponentRegistryItem[],
-  PluginExtensionAddedComponentConfig
-> {
-  constructor(initialState: RegistryType<AddedComponentRegistryItem[]> = {}) {
-    super({
-      initialState,
-    });
+export class AddedComponentsRegistry extends Registry<AddedComponentRegistryItem[], PluginExtensionAddedComponentConfig> {
+  constructor(
+    options: {
+      registrySubject?: ReplaySubject<RegistryType<AddedComponentRegistryItem[]>>;
+      initialState?: RegistryType<AddedComponentRegistryItem[]>;
+    } = {}
+  ) {
+    super(options);
   }
 
   mapToRegistry(
